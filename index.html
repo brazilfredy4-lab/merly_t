@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WASI | Auténtica Comida Criolla Peruana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="imagenes/logo/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="imagenes/logo/wasi-logo.png" alt="WASI Logo" class="logo-img" id="logo-img" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <span class="brand-name">WASI</span>
+                        <span class="brand-subtitle">COMIDA CRIOLLA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#combos" class="nav-link">Combos</a>
+                <a href="#menu" class="nav-link">Menú</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                <button class="nav-cart-btn" id="cart-toggle">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="logo/logov.jpeg"WASI" class="hero-logo-img" onerror="this.style.display='none'">
+                <h1 class="hero-title">WASI</h1>
+            </div>
+            <p class="hero-subtitle">Sabores Ancestrales del Perú</p>
+            <div class="hero-divider">
+                <div class="divider-line"></div>
+                <div class="divider-icon">🍽️</div>
+                <div class="divider-line"></div>
+            </div>
+            <p class="hero-description">Auténtica comida criolla preparada con ingredientes frescos y tradición familiar</p>
+            
+            <!-- Redes Sociales en Hero -->
+            <div class="hero-social">
+                <a href="https://www.facebook.com/share/1YqnNqi1fP/" class="social-btn facebook" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/wasi_comidacriolla" class="social-btn instagram" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@wasi45138" class="social-btn tiktok" target="_blank" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="mailto:wasi75817@gmail.com" class="social-btn email" title="Correo">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#menu" class="btn-primary">
+                    <i class="fas fa-utensils"></i> Ver Menú
+                </a>
+                <a href="https://wa.me/51931686244" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Tu Pedido</h3>
+            <button class="cart-close" id="cart-close">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Tu carrito está vacío</p>
+                <small>Agrega platos del menú</small>
+            </div>
+        </div>
+        
+        <div class="cart-summary" id="cart-summary" style="display: none;">
+            <div class="cart-totals">
+                <div class="cart-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">S/ 0.00</span>
+                </div>
+                <div class="cart-row">
+                    <span>Delivery:</span>
+                    <span id="cart-delivery">S/ 5.00</span>
+                </div>
+                <div class="cart-row total">
+                    <strong>Total:</strong>
+                    <strong id="cart-total">S/ 5.00</strong>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="btn-clear" id="clear-cart">
+                    <i class="fas fa-trash"></i> Vaciar Carrito
+                </button>
+                <button class="btn-checkout" id="checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Finalizar Pedido
+                </button>
+            </div>
+            
+            <div class="cart-note">
+                <p><i class="fas fa-info-circle"></i> Delivery gratis en pedidos mayores a S/ 50.00</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Combos Especiales -->
+    <section class="combos-section" id="combos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Combos Especiales</h2>
+                <p class="section-subtitle">Ahorra con nuestros packs familiares</p>
+            </div>
+
+            <div class="combos-grid">
+                <div class="combo-card">
+                    <div class="combo-badge">RECOMENDADO</div>
+                    <div class="combo-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagenes/combos/combo-familiar.jpg');">
+                        <div class="combo-overlay">
+                            <h3>Combo Familiar</h3>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <div class="combo-price">
+                            <span class="price-old">S/ 110.00</span>
+                            <span class="price-new">S/ 95.00</span>
+                        </div>
+                        <ul class="combo-items">
+                            <li><i class="fas fa-check"></i> 2 Lomo Saltado</li>
+                            <li><i class="fas fa-check"></i> 1 Aji de Gallina</li>
+                            <li><i class="fas fa-check"></i> 1 Arroz con Pollo</li>
+                            <li><i class="fas fa-check"></i> 1 Papa a la Huancaína</li>
+                            <li><i class="fas fa-check"></i> 3 Chicha Morada</li>
+                        </ul>
+                        <p class="combo-description">Perfecto para 4-5 personas</p>
+                        <button class="btn-add-combo" data-id="combo1" data-name="Combo Familiar" data-price="95.00">
+                            <i class="fas fa-cart-plus"></i> Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <div class="combo-card">
+                    <div class="combo-badge">PARA PAREJAS</div>
+                    <div class="combo-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagenes/combos/combo-parejas.jpg');">
+                        <div class="combo-overlay">
+                            <h3>Combo Para 2</h3>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <div class="combo-price">
+                            <span class="price-old">S/ 65.00</span>
+                            <span class="price-new">S/ 55.00</span>
+                        </div>
+                        <ul class="combo-items">
+                            <li><i class="fas fa-check"></i> 1 Lomo Saltado</li>
+                            <li><i class="fas fa-check"></i> 1 Seco de Res</li>
+                            <li><i class="fas fa-check"></i> 1 Causa Limeña</li>
+                            <li><i class="fas fa-check"></i> 2 Inca Kola</li>
+                        </ul>
+                        <p class="combo-description">Ideal para compartir en pareja</p>
+                        <button class="btn-add-combo" data-id="combo2" data-name="Combo Para 2" data-price="55.00">
+                            <i class="fas fa-cart-plus"></i> Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <div class="combo-card">
+                    <div class="combo-badge">TRADICIONAL</div>
+                    <div class="combo-img" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagenes/combos/combo-criollo.jpg');">
+                        <div class="combo-overlay">
+                            <h3>Combo Criollo</h3>
+                        </div>
+                    </div>
+                    <div class="combo-content">
+                        <div class="combo-price">
+                            <span class="price-old">S/ 85.00</span>
+                            <span class="price-new">S/ 75.00</span>
+                        </div>
+                        <ul class="combo-items">
+                            <li><i class="fas fa-check"></i> 1 Ceviche Clásico</li>
+                            <li><i class="fas fa-check"></i> 1 Arroz con Pato</li>
+                            <li><i class="fas fa-check"></i> 1 Causa Rellena</li>
+                            <li><i class="fas fa-check"></i> 2 Chicha Morada</li>
+                            <li><i class="fas fa-check"></i> Postre: Mazamorra Morada</li>
+                        </ul>
+                        <p class="combo-description">Experiencia criolla completa</p>
+                        <button class="btn-add-combo" data-id="combo3" data-name="Combo Criollo" data-price="75.00">
+                            <i class="fas fa-cart-plus"></i> Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú Individual -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Menú Criollo</h2>
+                <p class="section-subtitle">Selecciona tus platos favoritos</p>
+            </div>
+
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-utensils"></i> Todos
+                </button>
+                <button class="category-btn" data-category="principales">
+                    <i class="fas fa-drumstick-bite"></i> Principales
+                </button>
+                <button class="category-btn" data-category="entradas">
+                    <i class="fas fa-lemon"></i> Entradas
+                </button>
+                <button class="category-btn" data-category="bebidas">
+                    <i class="fas fa-glass-whiskey"></i> Bebidas
+                </button>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Platos Principales -->
+                <div class="menu-item" data-category="principales" data-id="1" data-name="Lomo Saltado" data-price="32.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/lomo-saltado.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Lomo Saltado</h3>
+                            <span class="menu-price">S/ 32.00</span>
+                        </div>
+                        <p class="menu-description">Lomo de res salteado con cebolla, tomate, ají y papas fritas</p>
+                        <div class="menu-tags">
+                            <span class="tag popular">POPULAR</span>
+                            <span class="tag tiempo">⏱️ 20 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="principales" data-id="2" data-name="Aji de Gallina" data-price="28.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/aji-gallina.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Aji de Gallina</h3>
+                            <span class="menu-price">S/ 28.00</span>
+                        </div>
+                        <p class="menu-description">Pollo deshilachado en crema de ají amarillo con nueces</p>
+                        <div class="menu-tags">
+                            <span class="tag cremoso">CREMOSO</span>
+                            <span class="tag tiempo">⏱️ 25 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="principales" data-id="3" data-name="Ceviche Clásico" data-price="30.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/ceviche.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Ceviche Clásico</h3>
+                            <span class="menu-price">S/ 30.00</span>
+                        </div>
+                        <p class="menu-description">Pescado fresco marinado en limón con cebolla y ají limo</p>
+                        <div class="menu-tags">
+                            <span class="tag bandera">🇵🇪 BANDERA</span>
+                            <span class="tag tiempo">⏱️ 15 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="principales" data-id="4" data-name="Seco de Res" data-price="26.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/seco-res.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Seco de Res</h3>
+                            <span class="menu-price">S/ 26.00</span>
+                        </div>
+                        <p class="menu-description">Estofado de res con culantro, frejoles y arroz blanco</p>
+                        <div class="menu-tags">
+                            <span class="tag guiso">GUISO</span>
+                            <span class="tag tiempo">⏱️ 30 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Entradas -->
+                <div class="menu-item" data-category="entradas" data-id="5" data-name="Causa Limeña" data-price="18.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/causa.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Causa Limeña</h3>
+                            <span class="menu-price">S/ 18.00</span>
+                        </div>
+                        <p class="menu-description">Papa amarilla con ají, rellena de pollo o atún</p>
+                        <div class="menu-tags">
+                            <span class="tag frio">FRÍO</span>
+                            <span class="tag tiempo">⏱️ 15 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="entradas" data-id="6" data-name="Papa a la Huancaína" data-price="16.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/platos/papa-huancaina.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Papa a la Huancaína</h3>
+                            <span class="menu-price">S/ 16.00</span>
+                        </div>
+                        <p class="menu-description">Papa con salsa de ají amarillo, huevo y aceituna</p>
+                        <div class="menu-tags">
+                            <span class="tag clasico">CLÁSICO</span>
+                            <span class="tag tiempo">⏱️ 10 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bebidas -->
+                <div class="menu-item" data-category="bebidas" data-id="7" data-name="Chicha Morada" data-price="8.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/bebidas/chicha-morada.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Chicha Morada</h3>
+                            <span class="menu-price">S/ 8.00</span>
+                        </div>
+                        <p class="menu-description">Refrescante bebida de maíz morado con piña y canela</p>
+                        <div class="menu-tags">
+                            <span class="tag tradicional">TRADICIONAL</span>
+                            <span class="tag tiempo">⏱️ 5 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="bebidas" data-id="8" data-name="Inca Kola" data-price="6.00">
+                    <div class="menu-item-img" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imagenes/bebidas/inca-kola.jpg');">
+                        <div class="menu-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Inca Kola 500ml</h3>
+                            <span class="menu-price">S/ 6.00</span>
+                        </div>
+                        <p class="menu-description">Bebida gaseosa sabor a hierba luisa</p>
+                        <div class="menu-tags">
+                            <span class="tag popular">POPULAR</span>
+                            <span class="tag tiempo">⏱️ 2 min</span>
+                        </div>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-note">
+                <p><i class="fas fa-info-circle"></i> Todos los platos incluyen guarnición. Tiempos de preparación aproximados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de Contacto -->
+    <section class="info-section" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto y Delivery</h2>
+                <p class="section-subtitle">Estamos para servirte</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Dirección</h3>
+                    <p>Jirón Tangai 194</p>
+                    <p>Segunda Etapa - Buenos Aires</p>
+                    <small>Zona de delivery: Radio de 5km</small>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horarios</h3>
+                    <p>Lunes a Domingo</p>
+                    <p class="info-time">12:00 PM - 4:00 PM</p>
+                    <small>Almuerzos y delivery</small>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Delivery</h3>
+                    <p class="info-phone">931 686 244</p>
+                    <p>WhatsApp y llamadas</p>
+                    <a href="https://wa.me/51931686244" class="btn-delivery" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Pedir Ahora
+                    </a>
+                </div>
+            </div>
+
+            <!-- Redes Sociales en Contacto -->
+            <div class="social-contact">
+                <h3>Conéctate con nosotros</h3>
+                <p>Síguenos en nuestras redes sociales para promociones y novedades</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1YqnNqi1fP/" class="social-link facebook" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/wasi_comidacriolla" class="social-link instagram" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@wasi45138" class="social-link tiktok" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="mailto:wasi75817@gmail.com" class="social-link email" title="Correo Electrónico">
+                        <i class="fas fa-envelope"></i>
+                        <span>Correo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="imagenes/logo/wasi-logo.png" alt="WASI Logo" class="footer-logo-img" onerror="this.style.display='none'">
+                        <div class="footer-logo-text">
+                            <h3>WASI</h3>
+                            <p>Comida Criolla Peruana</p>
+                        </div>
+                    </div>
+                    <p class="footer-slogan">Sabores que hablan de casa</p>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contáctanos</h4>
+                    <p><i class="fas fa-phone"></i> 931 686 244</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jirón Tangai 194, Buenos Aires</p>
+                    <p><i class="fas fa-clock"></i> 12:00 PM - 4:00 PM</p>
+                    <p><i class="fas fa-envelope"></i> wasi75817@gmail.com</p>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1YqnNqi1fP/" class="social-icon facebook" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/wasi_comidacriolla" class="social-icon instagram" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@wasi45138" class="social-icon tiktok" target="_blank" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="mailto:wasi75817@gmail.com" class="social-icon email" title="Correo">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    <p class="social-text">Síguenos para promociones especiales</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> WASI Comida Criolla. Todos los derechos reservados.</p>
+                <p class="footer-note">Delivery disponible en Buenos Aires y alrededores | Horario: 12:00 PM - 4:00 PM</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botones flotantes -->
+    <button class="cart-float" id="cart-float">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-float-count">0</span>
+    </button>
+
+    <a href="https://wa.me/51931686244" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
